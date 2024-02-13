@@ -1,13 +1,13 @@
-import { useImperativeHandle, useRef, useState } from 'react'
-import useImperativeContext from '../../../hooks/useImperativeContext'
+import { useContext, useImperativeHandle, useRef, useState } from 'react'
+import { ImperativeContext } from '../../../contexts/imperativeContext'
 
 type ImperativeHandleType = {
   increment: () => void
 }
 
 const InnerComponent = () => {
-  const { imperativeRef } = useImperativeContext()
-  const buttonRef = useRef(null)
+  const { imperativeRef } = useContext(ImperativeContext)!
+  const buttonRef = useRef<HTMLButtonElement>(null)
   const [count, setCount] = useState(0)
 
   useImperativeHandle<unknown, ImperativeHandleType>(imperativeRef, () => ({

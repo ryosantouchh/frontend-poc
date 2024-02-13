@@ -1,8 +1,9 @@
-import useImperativeContext from '../../../hooks/useImperativeContext'
+import { useContext } from 'react'
 import InnerComponent from '../InnerComponent/InnerComponent'
+import { ImperativeContext } from '../../../contexts/imperativeContext'
 
 const OuterComponent = () => {
-  const { imperativeRef } = useImperativeContext()
+  const { imperativeRef } = useContext(ImperativeContext)!
 
   const handleIncrement = () => {
     if (imperativeRef.current) {

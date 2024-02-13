@@ -4,7 +4,7 @@ type ImperativeHandleType = {
   increment: () => void
 }
 
-const ChildComponent = forwardRef<HTMLButtonElement, unknown>((_, ref) => {
+const ChildComponent = forwardRef<ImperativeHandleType, unknown>((_, ref) => {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const [count, setCount] = useState<number>(0)
 

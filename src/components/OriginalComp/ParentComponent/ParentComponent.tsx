@@ -1,8 +1,12 @@
 import { useRef } from 'react'
 import ChildComponent from '../ChildComponent/ChildComponent'
 
+type ImperativeHandleType = {
+  increment: () => void
+}
+
 const ParentComponent = () => {
-  const buttonRef = useRef<HTMLButtonElement>(null)
+  const buttonRef = useRef<ImperativeHandleType>(null)
 
   const handleIncrement = () => {
     if (buttonRef.current) {

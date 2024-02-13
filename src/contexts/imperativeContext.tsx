@@ -1,7 +1,14 @@
-/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useRef } from 'react'
 
-export const ImperativeContext = createContext({})
+type ImperativeHandleType = {
+  increment: () => void
+}
+
+type ContextType = {
+  imperativeRef: React.RefObject<ImperativeHandleType>
+}
+
+export const ImperativeContext = createContext<ContextType | null>(null)
 
 type ImperativeContextProviderProps = {
   children: React.ReactNode
@@ -10,7 +17,7 @@ type ImperativeContextProviderProps = {
 const ImperativeContextProvider = ({
   children,
 }: ImperativeContextProviderProps) => {
-  const imperativeRef = useRef(null)
+  const imperativeRef = useRef<ImperativeHandleType>(null)
 
   const value = {
     imperativeRef,
